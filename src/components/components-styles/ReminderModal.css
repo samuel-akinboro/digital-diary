@@ -1,0 +1,23 @@
+.reminder__modal{
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.633);
+  height: 100vh;
+  width: 93.1vw;
+  right: 0;
+  z-index: 19;
+  top: 0;
+  display: grid;
+  place-content: center;
+}
+
+.reminder__modal .reminder__modal__container{
+  background-color: #fff;
+  width: 350px;
+  padding: 1.5em;
+}
+
+.reminder__modal .reminder__modal__container .box div > .MuiSvgIcon-root{
+  color: red;
+  font-size: 3.5em;
+  margin-top: 16px;
+}

@@ -1,0 +1,55 @@
+.note{
+  cursor: pointer;
+  z-index: 10 !important;
+}
+
+.note:hover {
+  transform: scale(1.1);
+}
+
+.note h1{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.note p{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 7; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.note span{
+  height: 35px;
+  width: 35px;
+  background-color: #161515;
+  position: absolute;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.note .MuiSvgIcon-root{
+  color: #fff;
+  font-size: 1em;
+}
+
+.note .edit{
+  right: 10px;
+  bottom: 10px;
+}
+
+.note .favorite{
+  right: 10px;
+  top: 10px;
+}
+
+.note:hover span {
+  opacity: 1;
+}

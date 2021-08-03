@@ -1,0 +1,33 @@
+.main__container{
+  flex: 0.93;
+  height: 100%;
+}
+
+.main__container .search-box{
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 16;
+}
+
+.main__container .search-box .search-bar{
+  background-color: rgb(227, 227, 227);
+  border-radius: 40px;
+}
+
+.main__container .search-box .search-bar input{
+  background-color: rgb(227, 227, 227);
+}
+
+.main__container .search-box .search-bar input:focus{
+  outline-width: 0;
+}
+
+.main__container .diary__notes .notes__container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+  grid-template-rows: auto;
+  grid-gap: 20px 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
