@@ -26,8 +26,7 @@ function Diary({id, uid, dispatch}) {
       </div>
       <div className="diary__notes">
         <h1 className="text-4xl font-bold ml-8">Diary{id}</h1>
-        <div className="notes__container p-8">
-          <Note />    
+        <div className="notes__container p-8">  
           {loggedInUserDiary.map(({id, title, story, date}) => <Note key={id} id={id} title={title} story={story} date={date} />)}
         </div>
       </div>

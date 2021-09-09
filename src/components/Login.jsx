@@ -1,7 +1,7 @@
 import React from 'react'
 import {auth, provider, db} from '../Firebase/Firebase.js'
 import {connect} from 'react-redux'
-import googleLogo from '../assets/images/g-logo.jpg'
+import googleLogo from '../assets/images/g-logo.png'
 
 
 function Login({dispatch}) {

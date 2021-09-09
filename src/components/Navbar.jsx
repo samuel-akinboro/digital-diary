@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom'
 import HomeIcon from '@material-ui/icons/Home';
 import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 import NoteModalForm from './NoteModalForm';
-import ReminderModal from './ReminderModal';
 import {Avatar} from '@material-ui/core'
 import {connect} from 'react-redux'
 import ReadStoryModal from './ReadStoryModal';
@@ -14,7 +13,6 @@ import ReadStoryModal from './ReadStoryModal';
 function Navbar({photoURL, readStory, dispatch}) {
   const [showNoteCategory, setShowNoteCategory] = useState(false);
   const [showNoteModal, setShowNoteModal] = useState({show: false, category: "diary"});
-  const [showReminderModal, setShowReminderModal] = useState({show: true, message: "", time: ""});
   // const [showReadStoryModal, setShowReadStoryModal] = useState({show: true, title: "", story: ""});
   return (
     <nav>
@@ -24,10 +22,6 @@ function Navbar({photoURL, readStory, dispatch}) {
 
       {readStory.show &&
           <ReadStoryModal title={readStory.title} story={readStory.story} />
-        }
-
-      {showReminderModal.show &&
-          <ReminderModal handleClick={()=> {setShowReminderModal({show: false, message: "", time: ""}); setShowNoteCategory(false)}} />
         }
 
       <div className="nav__top">
