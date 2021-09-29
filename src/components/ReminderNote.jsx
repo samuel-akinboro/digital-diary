@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import "./components-styles/Note.css"
-import EditIcon from '@material-ui/icons/Edit';
-import StarRateIcon from '@material-ui/icons/StarRate';
+// import EditIcon from '@material-ui/icons/Edit';
+// import StarRateIcon from '@material-ui/icons/StarRate';
 import {connect} from 'react-redux'
 import ReminderModal from './ReminderModal';
 import {db} from '../Firebase/Firebase'
+import DeleteIcon from '@material-ui/icons/Delete';
 
 function ReminderNote({id, uid, dispatch, title, story, date, reminderDetails, time, realDate, favorite = false}) {
   const colorGenerator = () => {
@@ -109,6 +110,10 @@ function ReminderNote({id, uid, dispatch, title, story, date, reminderDetails, t
         alarm(editMessage, dateSplit[0], dateSplit[1], dateSplit[2], hourMinute[0], hourMinute[1], 1)
   }
 
+  const remove = () => {
+    db.collection('users').doc(uid).collection("reminder").doc(id).delete()
+  }
+
   return (
     <>
       {showReminderModal.show &&
@@ -132,23 +137,23 @@ function ReminderNote({id, uid, dispatch, title, story, date, reminderDetails, t
         }}>Modify</p>}
         <p>{story}
         </p>
-      <span className="edit"><EditIcon /></span> 
-      <span className="favorite" onClick={()=> setIsStarred(!isStarred)}>
-        <StarRateIcon style={{
-          color: `${isStarred ? "#FFD100" : "#fff"}`
-        }} />
-      </span>
-      {showEditForm && <div className="h-full w-full absolute bg-black inset-0 bg-opacity-30 z-30" onClick={()=> setShowEditForm(false)}></div>}
-        {showEditForm && <input type="date" className="relative bottom-3 z-40" value={editDate} onChange={(e)=> setEditDate(e.target.value)} />}
-        {showEditForm && <input type="time" className="relative bottom-2 z-40" value={editTime} onChange={(e)=> setEditTime(e.target.value)} />}
-        {showEditForm && <textarea className='relative p-2 h-1/4 bottom-0 z-40' value={editMessage} onChange={(e)=> setEditMessage(e.target.value)}></textarea>}
-      <div className="pt-2 flex justify-start font-semibold text-sm"> {date}</div>
-      <div className="w-full h-full absolute inset-0 z-10" onClick={()=>  dispatch({
+        <div className="cover w-full h-full absolute inset-0 z-10" onClick={()=>  dispatch({
             type: "READ_STORY",
             title,
             story,
             show: true
           })} onContextMenu={handleRightClick}></div>
+      <span className="edit z-20" onClick={remove}><DeleteIcon /></span> 
+      {/* <span className="favorite" onClick={()=> setIsStarred(!isStarred)}>
+        <StarRateIcon style={{
+          color: `${isStarred ? "#FFD100" : "#fff"}`
+        }} />
+      </span> */}
+      {showEditForm && <div className="h-full w-full absolute bg-black inset-0 bg-opacity-30 z-30" onClick={()=> setShowEditForm(false)}></div>}
+        {showEditForm && <input type="date" className="relative bottom-3 z-40" value={editDate} onChange={(e)=> setEditDate(e.target.value)} />}
+        {showEditForm && <input type="time" className="relative bottom-2 z-40" value={editTime} onChange={(e)=> setEditTime(e.target.value)} />}
+        {showEditForm && <textarea className='relative p-2 h-1/4 bottom-0 z-40' value={editMessage} onChange={(e)=> setEditMessage(e.target.value)}></textarea>}
+      <div className="pt-2 flex justify-start font-semibold text-sm"> {date}</div>
           {showEditForm && <button className='relative bottom-0 bg-black text-white w-full py-2 rounded-md mx-auto z-40' onClick={submitRevision}>Set</button>}
       {showModify && <div className="w-full h-full absolute inset-0 z-20" onContextMenu={(e)=> e.preventDefault()} onClick={()=>  setShowModify(false)}></div>}
       </div>

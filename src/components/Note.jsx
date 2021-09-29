@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import "./components-styles/Note.css"
 import EditIcon from '@material-ui/icons/Edit';
-import StarRateIcon from '@material-ui/icons/StarRate';
+import DeleteIcon from '@material-ui/icons/Delete';
 import {connect} from 'react-redux'
-import ReminderModal from './ReminderModal';
+// import ReminderModal from './ReminderModal';
 import {db} from '../Firebase/Firebase'
 
 function Note({id, uid, dispatch, title, story, date, favorite = false}) {
@@ -30,6 +30,10 @@ function Note({id, uid, dispatch, title, story, date, favorite = false}) {
     update().then(setShowEditForm(false))
   }
 
+  const remove = () => {
+    db.collection('users').doc(uid).collection("diary").doc(id).delete()
+  }
+
   return (
     <>
       <div className="note p-4 rounded-2xl transform hover:scale-110 duration-200 ease-out relative" style={{backgroundColor: colorGenerator()}}>
@@ -41,10 +45,8 @@ function Note({id, uid, dispatch, title, story, date, favorite = false}) {
             story,
             show: true
           })}></div>
-        <span className="edit" style={{zIndex: 11}} onClick={()=> setShowEditForm(true)}><EditIcon /></span> 
-        <span className="favorite" style={{zIndex: 11}} onClick={()=> setIsStarred(!isStarred)}>
-          <StarRateIcon style={{color: `${isStarred ? "#FFD100" : "#fff"}`}} />
-        </span>
+        <span className="favorite" style={{zIndex: 11}} onClick={()=> setShowEditForm(true)}><EditIcon /></span> 
+        <span className="edit z-20" onClick={remove}><DeleteIcon /></span>
         {showEditForm && <input type="text" className="relative bottom-4 z-20 p-2 font-semibold" value={editTitle} onChange={(e)=> setEditTitle(e.target.value)} />}
         {showEditForm && <textarea className='relative z-20 bottom-2 p-2 h-5/6' value={editStory} onChange={(e)=> setEditStory(e.target.value)} resize="false"></textarea>}
         <div className="pt-2 flex justify-start font-semibold text-sm"> {date}</div>
