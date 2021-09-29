@@ -25,7 +25,7 @@ function Reminder({uid}) {
       <div className="diary__notes">
         <h1 className="text-4xl font-bold ml-8 mt-4">My Reminder</h1>
         <div className="notes__container p-8">
-          {userReminder.map(({id, message, date, time}) => <ReminderNote key={id} id={id} title="Reminder!!!" story={message} date={`${time} ${date}`} reminderDetails={({time, date})} />)}
+          {userReminder.map(({id, message, date, time}) => <ReminderNote key={id} id={id} title="Reminder!!!" story={message} date={`${time} ${date}`} time={time} realDate={date} reminderDetails={({time, date})} />)}
         </div>
       </div>
     </div>
