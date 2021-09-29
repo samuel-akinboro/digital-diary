@@ -54,6 +54,10 @@
   top: 10px;
 }
 
-.note:hover span {
+.cover:hover ~ span{
+  opacity: 1 !important;
+}
+
+span:hover {
   opacity: 1;
 }

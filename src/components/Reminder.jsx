@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './components-styles/Diary.css'
 import SearchIcon from '@material-ui/icons/Search';
-import Note from './Note'
+import ReminderNote from './ReminderNote'
 import {db} from '../Firebase/Firebase'
 import {connect} from 'react-redux'
 import ReminderModal from './ReminderModal';
@@ -25,7 +25,7 @@ function Reminder({uid}) {
       <div className="diary__notes">
         <h1 className="text-4xl font-bold ml-8 mt-4">My Reminder</h1>
         <div className="notes__container p-8">
-          {userReminder.map(({id, message, date, time}) => <Note key={id} id={id} title="Reminder!!!" story={message} date={`${time} ${date}`} reminderDetails={({time, date})} />)}
+          {userReminder.map(({id, message, date, time}) => <ReminderNote key={id} id={id} title="Reminder!!!" story={message} date={`${time} ${date}`} reminderDetails={({time, date})} />)}
         </div>
       </div>
     </div>
