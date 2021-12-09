@@ -127,7 +127,7 @@ function ReminderNote({id, uid, dispatch, title, story, date, reminderDetails, t
            />
         }
 
-      <div className="note p-4 rounded-2xl transform hover:scale-110 duration-200 overflow-hidden ease-out relative" style={{backgroundColor: colorGenerator(), position: "relative"}}>
+      <div className="note p-4 rounded-2xl transform lg-hover:scale-110 duration-200 overflow-hidden ease-out relative" style={{backgroundColor: colorGenerator(), position: "relative"}}>
 
         <h1 className="font-semibold mb-2">
           {title}

@@ -36,7 +36,7 @@ function Note({id, uid, dispatch, title, story, date, favorite = false}) {
 
   return (
     <>
-      <div className="note p-4 rounded-2xl transform hover:scale-110 duration-200 ease-out relative" style={{backgroundColor: colorGenerator()}}>
+      <div className="note p-4 rounded-2xl transform lg-hover:scale-110 duration-200 ease-out relative" style={{backgroundColor: colorGenerator()}}>
         <h1 className="font-semibold mb-2">{title}</h1>
         <p>{story}</p>
         <div className="cover w-full h-full absolute inset-0 z-10" onClick={()=>  dispatch({
@@ -45,7 +45,7 @@ function Note({id, uid, dispatch, title, story, date, favorite = false}) {
             story,
             show: true
           })}></div>
-        <span className="favorite" style={{zIndex: 11}} onClick={()=> setShowEditForm(true)}><EditIcon /></span> 
+        <span className="favorite" style={{zIndex: 11}} onClick={()=> setShowEditForm(true)}><EditIcon /></span>
         <span className="edit z-20" onClick={remove}><DeleteIcon /></span>
         {showEditForm && <input type="text" className="relative bottom-4 z-20 p-2 font-semibold" value={editTitle} onChange={(e)=> setEditTitle(e.target.value)} />}
         {showEditForm && <textarea className='relative z-20 bottom-2 p-2 h-5/6' value={editStory} onChange={(e)=> setEditStory(e.target.value)} resize="false"></textarea>}
