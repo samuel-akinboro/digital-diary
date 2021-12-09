@@ -26,7 +26,7 @@ function Navbar({photoURL, readStory, dispatch}) {
 
       <div className="nav__top">
         <div className="logo">
-          <h1 className="font-sans text-xl font-bold py-4 mt-2">Docket</h1>
+          <h1 className="font-sans text-lg lg-text-xl font-bold py-4 mt-2">Docket</h1>
         </div>
       </div>
       <div className="nav__bottom mt-8">
@@ -34,8 +34,8 @@ function Navbar({photoURL, readStory, dispatch}) {
           <AddIcon />
         </div>
 
-        {showNoteCategory && 
-          <motion.ul 
+        {showNoteCategory &&
+          <motion.ul
             className="shadow-2xl"
             animate={{scale: [1, 1.1, 1, 1.2, 1.1, 1]}}
           >

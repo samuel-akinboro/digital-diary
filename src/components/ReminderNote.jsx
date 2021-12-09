@@ -24,11 +24,12 @@ function ReminderNote({id, uid, dispatch, title, story, date, reminderDetails, t
   const [showEditForm, setShowEditForm] = useState(false)
 
   useEffect(()=>{
+    // Timer algorithm
     if(reminderDetails?.time){
-      // set alarm 
+      // set alarm
       const hourMinute = reminderDetails.time.split(":");
       const dateSplit = reminderDetails.date.split("-");
-  
+
       const alarm = (message, year, month, day, hour, min, sec) =>{
         let reminderDate = new Date(year, month - 1, day, hour, min, sec).getTime();
         let currentDate = new Date().getTime();
@@ -40,7 +41,7 @@ function ReminderNote({id, uid, dispatch, title, story, date, reminderDetails, t
         let rmonth = new Date(r).getMonth() * rd;
         let total = rs + rm + rh + rd + rmonth
         let ID = setInterval(alarm2, 1000);
-       
+
         function alarm2() {
         if(total > 0){
         total--
@@ -55,7 +56,7 @@ function ReminderNote({id, uid, dispatch, title, story, date, reminderDetails, t
         }
         return r
         };
-  
+
         alarm(story, dateSplit[0], dateSplit[1], dateSplit[2], hourMinute[0], hourMinute[1], 1)
     }
   }, []);
@@ -79,7 +80,7 @@ function ReminderNote({id, uid, dispatch, title, story, date, reminderDetails, t
 
     const hourMinute = editTime.split(":");
       const dateSplit = editDate.split("-");
-  
+
       const alarm = (message, year, month, day, hour, min, sec) =>{
         let reminderDate = new Date(year, month - 1, day, hour, min, sec).getTime();
         let currentDate = new Date().getTime();
@@ -91,7 +92,7 @@ function ReminderNote({id, uid, dispatch, title, story, date, reminderDetails, t
         let rmonth = new Date(r).getMonth() * rd;
         let total = rs + rm + rh + rd + rmonth
         let ID = setInterval(alarm2, 1000);
-       
+
         function alarm2() {
         if(total > 0){
         total--
@@ -106,7 +107,7 @@ function ReminderNote({id, uid, dispatch, title, story, date, reminderDetails, t
         }
         return r
         };
-  
+
         alarm(editMessage, dateSplit[0], dateSplit[1], dateSplit[2], hourMinute[0], hourMinute[1], 1)
   }
 
@@ -117,8 +118,8 @@ function ReminderNote({id, uid, dispatch, title, story, date, reminderDetails, t
   return (
     <>
       {showReminderModal.show &&
-          <ReminderModal 
-            message={showReminderModal.message} 
+          <ReminderModal
+            message={showReminderModal.message}
             time={showReminderModal.time}
             date={showReminderModal.date}
             pastReminder={pastReminder}
@@ -143,7 +144,7 @@ function ReminderNote({id, uid, dispatch, title, story, date, reminderDetails, t
             story,
             show: true
           })} onContextMenu={handleRightClick}></div>
-      <span className="edit z-20" onClick={remove}><DeleteIcon /></span> 
+      <span className="edit z-20" onClick={remove}><DeleteIcon /></span>
       {/* <span className="favorite" onClick={()=> setIsStarred(!isStarred)}>
         <StarRateIcon style={{
           color: `${isStarred ? "#FFD100" : "#fff"}`
